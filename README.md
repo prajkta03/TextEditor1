@@ -1,2 +1,2 @@
 # TextEditor1
- uplode the local repository
+ uplode the local repository on github account
