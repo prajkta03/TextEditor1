@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="text.css">
+    <title>TextBox_Editor</title>
+    <style>
+        
+        textarea {
+            font-family: inherit;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center" class="heading"> Text Box</h1>
+    <div class="container" align="center">
+
+        <form class="textboxform">
+            <label color="red"> Enter Your Text Below</label><br><br>
+            <textarea id="text" rows="10" cols="70" onkeyup="updateInfo()" autofocus></textarea><br><br>
+            <button type="button" onclick="transformUpperCase()">UpperCase</button>
+            <button type="button" onclick="transformLowerCase()">Lowercase</button>
+           
+            <button type="button" onclick="changeColor()">Change Color</button>
+            <button type="button" onclick="textUnderLine()">Text UnderLine</button>
+            <button type="button" onclick="countWords()">Count Words</button>
+            <button type="button" onclick="countCharacters()">Count Characters</button>
+            <br><br><br><br>
+            <h2 id="textInfo">This Text Contains 0 Words And 0 Characters</h2>
+        </form>
+    </div>
+
+    <script>
+        let text = document.getElementById("text");
+        let textInfo = document.getElementById("textInfo");
+
+        function transformUpperCase() {
+            text.value = text.value.toUpperCase();
+        }
+
+        function transformLowerCase() {
+            text.value = text.value.toLowerCase();
+        }
+
+        function findtext() {
+            let searchtext = prompt("Enter The Text:");
+            if (text.value.includes(searchtext)) {
+                alert("Search text '" + searchtext + "' is present");
+            } else {
+                alert("Search text '" + searchtext + "' is not present");
+            }
+        }
+
+        function changeColor() {
+            let clr = prompt("Enter Your Favorite Color").toLowerCase();
+            text.style.color = clr;
+        }
+
+        function textUnderLine() {
+            text.style.textDecoration = "underline";
+        }
+
+        function countWords() {
+            let words = text.value.split(/\s+/).filter(word => word.length > 0);
+            textInfo.textContent = "This text contains " + words.length + " words and " + text.value.length + " characters";
+        }
+
+        function countCharacters() {
+            textInfo.textContent = "This text contains " + text.value.length + " characters";
+        }
+    </script>
+
+</body>
+</html>
+
+
+
