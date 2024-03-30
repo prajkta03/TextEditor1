@@ -26,6 +26,10 @@
             <button type="button" onclick="textUnderLine()">Text UnderLine</button>
             <button type="button" onclick="countWords()">Count Words</button>
             <button type="button" onclick="countCharacters()">Count Characters</button>
+            <button type="button" onclick="addPrefix()">Add Prefix</button>
+            <button type="button" onclick="addSuffix()">Add Suffix</button>
+            <button type="button" onclick="removeSpaces()">Remove Spaces</button>
+            <button type="button" onclick="reverseText()">Reverse Text</button>
             <br><br><br><br>
             <h2 id="textInfo">This Text Contains 0 Words And 0 Characters</h2>
         </form>
@@ -42,7 +46,10 @@
         function transformLowerCase() {
             text.value = text.value.toLowerCase();
         }
-
+        function changeColor() {
+            let clr = prompt("Enter Your Favorite Color").toLowerCase();
+            text.style.color = clr;
+        }
         function findtext() {
             let searchtext = prompt("Enter The Text:");
             if (text.value.includes(searchtext)) {
@@ -51,23 +58,34 @@
                 alert("Search text '" + searchtext + "' is not present");
             }
         }
-
-        function changeColor() {
-            let clr = prompt("Enter Your Favorite Color").toLowerCase();
-            text.style.color = clr;
-        }
-
         function textUnderLine() {
             text.style.textDecoration = "underline";
         }
 
         function countWords() {
             let words = text.value.split(/\s+/).filter(word => word.length > 0);
-            textInfo.textContent = "This text contains " + words.length + " words and " + text.value.length + " characters";
+            textInfo.textContent = "This text contains " + words.length + " words and " + text.value.length + " characters;
         }
 
         function countCharacters() {
             textInfo.textContent = "This text contains " + text.value.length + " characters";
+        }
+        function addPrefix() {
+            let prefix = prompt("Enter the prefix:");
+            text.value = prefix + text.value;
+        }
+
+        function addSuffix() {
+            let suffix = prompt("Enter the suffix:");
+            text.value = text.value + suffix;
+        }
+
+        function removeSpaces() {
+            text.value = text.value.replace(/\s/g, "");
+        }
+
+        function reverseText() {
+            text.value = text.value.split("").reverse().join("");
         }
     </script>
 
